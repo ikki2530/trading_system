@@ -1,0 +1,80 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    
+    <br>
+
+    <hr>
+    
+    <div class="container w-50">
+        <h2>Search Form</h2>
+        <div class="form-group">
+            <form action="" method="GET">
+                {{form.as_p}}
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: blue;">{{message}}</p>
+        {% endfor %}
+    {% endif %}
+    <h5>ORDERS</h5>
+    <a class="btn btn-info" href="{% url 'add_order' %}">Add a new order</a>
+    </div>
+
+    <hr/>
+    {% if orders %}
+    <br>
+    <div class="container w-75">
+    <div class="row">
+        
+
+        <div class="col-md-12">
+            
+            <hr>
+            <div class="card card-body">
+                
+                <table class="table table-sm">
+                    <tr>
+                        <th>Status</th>
+                        <th>Order Type</th>
+                        <th>Coin</th>
+                        <th>Base</th>
+                        <th>Amount</th>
+                        <th>Buy Price</th>
+                        <th>Sell Price</th>
+                        <th>Total</th>
+                    </tr>
+
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{order.status}}</td>
+                            <td>{{order.type_order}}</td>
+                            <td>{{order.coin}}</td>
+                            <td>{{order.base}}</td>
+                            <td>{{order.amount}}</td>
+                            <td>{{order.buy_price}}</td>
+                            <td>{{order.sell_price}}</td>
+                            {% if order.total > 0.00 %}
+                            <td style="color: #29A862;">{{order.total|floatformat:2}}</td>
+                            {% elif order.total < 0.00 %}
+                            <td style="color:crimson;">{{order.total|floatformat:2}}</td>
+                            {% else %}
+                            <td>{{order.total|floatformat:2}}</td>
+                            {% endif %}
+                            <td><a class="btn btn-sm btn-info" href="{% url 'edit_order' order.id %}">Update</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Delete</a></td>
+                            {% if order.status == "Open" %}
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'close_order' order.id %}">close</a></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    {% endif %}
+{% endblock content %}

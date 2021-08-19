@@ -1,0 +1,14 @@
+# .gitignore
+config.py
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Django stuff:
+*.log
+db.sqlite3
+.env.dev
+.env.prod
+.env.prod.db
+
+run/

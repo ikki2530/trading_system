@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>Close Operation</h1>
+<div>
+    <br/>
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to close the operation ?</p>
+        <input type="text" name="close_price" placeholder="Close price">
+        <input type="submit" value="confirm">
+        <a href="{% url 'home' %}">Cancel</a>
+    </form>
+</div>
+
+{% endblock content %}
