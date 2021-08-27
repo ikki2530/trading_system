@@ -1,5 +1,3 @@
-## URL: http://ec2-3-15-217-168.us-east-2.compute.amazonaws.com:1337/
-
 ## Table of Content
 * [Installation](#installation)
 * [File Descriptions](#file-descriptions)
@@ -8,6 +6,7 @@
 * [Authors](#authors)
 * [License](#license)
 
+### Note: Currently I'm working on deployment and backend. For the moment it is running in a free EC2 instance http://ec2-3-15-217-168.us-east-2.compute.amazonaws.com:1337/
 
 # Installation
 
